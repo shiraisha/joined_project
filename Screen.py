@@ -18,10 +18,9 @@ GRASS = pygame.transform.scale(GRASS_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HE
 MINE_IMAGE = pygame.image.load(os.path.join('pics', 'mine.png'))
 MINE = pygame.transform.scale(MINE_IMAGE, (60, 20))
 
-pygame.font.init() # you have to call this at the start,
-                   # if you want to use this module.
+pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 10)
-text_surface = my_font.render('Welcome to The Flag game. Have Fun!', True, (0, 0, 0))
+text_surface = my_font.render('Welcome to The Flag game. Have Fun!', True, consts.WHITE)
 
 multi_grass = []
 multi_grass_pos = []
@@ -61,15 +60,15 @@ def draw_grid(player_soldier):
         WIN.blit(multi_mine[i], (multi_mine_pos[i][0], multi_mine_pos[i][1]))
     pygame.display.update()
 
-def soldier_movement(player_soldier, keys_pressed):
-    if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
-        player_soldier.x -= consts.SQUARE_LENGTH
-    if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH+ player_soldier.width < consts.WIDTH:  # right
-        player_soldier.x += consts.SQUARE_LENGTH
-    if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH > 0:  # up
-        player_soldier.y -= consts.SQUARE_LENGTH
-    if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
-        player_soldier.y += consts.SQUARE_LENGTH
+# def soldier_movement(player_soldier, keys_pressed):
+#     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
+#         player_soldier.x -= consts.SQUARE_LENGTH
+#     if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH+ player_soldier.width < consts.WIDTH:  # right
+#         player_soldier.x += consts.SQUARE_LENGTH
+#     if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH > 0:  # up
+#         player_soldier.y -= consts.SQUARE_LENGTH
+#     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
+#         player_soldier.y += consts.SQUARE_LENGTH
 
 def draw_lose_message():
     draw_message(consts.LOSE_MESSAGE, consts.LOSE_FONT_SIZE,
@@ -86,20 +85,21 @@ def draw_message(message, font_size, color, location):
     text_img = font.render(message, True, color)
     WIN.blit(text_img, location)
 
-def main():
-    player_soldier = pygame.Rect(0,0,40,80)
-    flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
-    clock = pygame.time.Clock()
-    run = True
-    while run:
-        clock.tick(consts.FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-        keys_pressed = pygame.key.get_pressed()
-        soldier_movement(player_soldier,keys_pressed)
-        draw_window(player_soldier, flag)
-    pygame.quit()
+def draw_game():
+    pass
+    # player_soldier = pygame.Rect(0,0,40,80)
+    # flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
+    # clock = pygame.time.Clock()
+    # run = True
+    # while run:
+    #     clock.tick(consts.FPS)
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.QUIT:
+    #             run = False
+    #     keys_pressed = pygame.key.get_pressed()
+    #     soldier_movement(player_soldier,keys_pressed)
+    #     draw_window(player_soldier, flag)
+    # pygame.quit()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
