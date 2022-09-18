@@ -2,7 +2,10 @@ import consts
 import math
 
 
-def player(soldier_image, corner_position):
-    return {"image": soldier_image,
-            "pos": corner_position}
+def player():
+    return {"image": consts.SOLDIER,
+            "pos": [0,0]}
+def legs_location(player):
+    initial_pos_legs = [[0,3],[1,3]]
+
 
