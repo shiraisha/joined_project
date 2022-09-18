@@ -27,6 +27,7 @@ def main():
 
         elif is_win():
             state["state"] = consts.WIN_STATE
+        Screen.draw_game(state, player_soldier)
 
 
 def handle_user_events(player_soldier):
