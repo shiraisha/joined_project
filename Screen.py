@@ -39,6 +39,8 @@ def draw_window(player_soldier, flag):
     WIN.fill(consts.GREEN)
     WIN.blit(SOLDIER, (player_soldier.x, player_soldier.y))
     WIN.blit(FLAG, (flag.x, flag.y))
+    for i in range(len(multi_grass)):
+        WIN.blit(multi_grass[i], (multi_grass_pos[i][0], multi_grass_pos[i][1]))
     pygame.display.update()
 
 def draw_grid(player_soldier):
@@ -75,11 +77,7 @@ def main():
                 run = False
         keys_pressed = pygame.key.get_pressed()
         soldier_movement(player_soldier,keys_pressed)
-        # draw_window(player_soldier, flag)
-        # for i in range(len(multi_grass)):
-        #     WIN.blit(multi_grass[i], (multi_grass_pos[i][0], multi_grass_pos[i][1]))
-        # pygame.display.update()
-        draw_grid(player_soldier)
+        draw_window(player_soldier, flag)
     pygame.quit()
 
 if __name__ == "__main__":
