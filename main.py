@@ -13,4 +13,4 @@ def the_right_main():
     pygame.init()
     Screen.main()
 
-    while state["is_window_open"]
+    while state["is_window_open"] =
