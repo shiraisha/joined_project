@@ -1,6 +1,7 @@
 import pygame
 import random
 import consts
+import MineField
 import os
 
 WIN = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
@@ -17,7 +18,10 @@ GRASS = pygame.transform.scale(GRASS_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HE
 MINE_IMAGE = pygame.image.load(os.path.join('pics', 'mine.png'))
 MINE = pygame.transform.scale(MINE_IMAGE, (60, 20))
 
-square_grid = [['empty' for i in range(25)] for j in range(50)]
+pygame.font.init() # you have to call this at the start,
+                   # if you want to use this module.
+my_font = pygame.font.SysFont('Comic Sans MS', 10)
+text_surface = my_font.render('Welcome to The Flag game. Have Fun!', True, (0, 0, 0))
 
 multi_grass = []
 multi_grass_pos = []
@@ -37,6 +41,7 @@ for i in range(20):
 
 def draw_window(player_soldier, flag):
     WIN.fill(consts.GREEN)
+    WIN.blit(text_surface, (40,0))
     WIN.blit(SOLDIER, (player_soldier.x, player_soldier.y))
     WIN.blit(FLAG, (flag.x, flag.y))
     for i in range(len(multi_grass)):
@@ -52,6 +57,7 @@ def draw_grid(player_soldier):
             pygame.draw.rect(WIN, consts.GREEN, rect, 1)
     WIN.blit(SOLDIER, (player_soldier.x, player_soldier.y))
     for i in range(len(multi_mine)):
+        MineField.mines_locations((multi_mine_pos[i][0], multi_mine_pos[i][1]))
         WIN.blit(multi_mine[i], (multi_mine_pos[i][0], multi_mine_pos[i][1]))
     pygame.display.update()
 
@@ -64,6 +70,21 @@ def soldier_movement(player_soldier, keys_pressed):
         player_soldier.y -= consts.SQUARE_LENGTH
     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH
+
+def draw_lose_message():
+    draw_message(consts.LOSE_MESSAGE, consts.LOSE_FONT_SIZE,
+                 consts.LOSE_COLOR, consts.LOSE_LOCATION)
+
+
+def draw_win_message():
+    draw_message(consts.WIN_MESSAGE, consts.WIN_FONT_SIZE,
+                 consts.WIN_COLOR, consts.WIN_LOCATION)
+
+
+def draw_message(message, font_size, color, location):
+    font = pygame.font.SysFont(consts.FONT_NAME, font_size)
+    text_img = font.render(message, True, color)
+    WIN.blit(text_img, location)
 
 def main():
     player_soldier = pygame.Rect(0,0,40,80)
@@ -80,5 +101,5 @@ def main():
         draw_window(player_soldier, flag)
     pygame.quit()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

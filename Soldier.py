@@ -2,6 +2,7 @@ import consts
 import math
 
 
-def player(soldier_image, position):
+def player(soldier_image, corner_position):
     return {"image": soldier_image,
-            "pos": position}
+            "pos": corner_position}
+
