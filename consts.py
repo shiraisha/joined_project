@@ -14,9 +14,9 @@ SQUARE_LENGTH = 20**0.5
 SOLDIER_IMAGE = pygame.image.load(os.path.join('pics', 'soldier.png'))
 SOLDIER = pygame.transform.scale(SOLDIER_IMAGE, (40,80))
 FLAG_IMAGE = pygame.image.load(os.path.join('pics', 'flag.png'))
-FLAG = pygame.transform.scale(FLAG_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HEIGHT))
+FLAG = pygame.transform.scale(FLAG_IMAGE, (IMAGE_WIDTH, IMAGE_HEIGHT))
 GRASS_IMAGE = pygame.image.load(os.path.join('pics', 'grass.png'))
-GRASS = pygame.transform.scale(GRASS_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HEIGHT))
+GRASS = pygame.transform.scale(GRASS_IMAGE, (IMAGE_WIDTH, IMAGE_HEIGHT))
 MINE_IMAGE = pygame.image.load(os.path.join('pics', 'mine.png'))
 MINE = pygame.transform.scale(MINE_IMAGE, (60, 20))
 
@@ -37,3 +37,6 @@ START_SOLDIER_LEGS_LOCATION = (1, 4)
 RUNNING_STATE = 1
 LOSE_STATE = 2
 WIN_STATE = 3
+
+BACKGROUND_COLOR = (0, 100, 0)
+"""added by me"""

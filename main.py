@@ -18,8 +18,10 @@ state = {
 def main():
     pygame.init()
     player_soldier = pygame.Rect(0,0,40,80)
+    clock = pygame.time.Clock()
 
     while state["is_window_open"]:
+        clock.tick(consts.FPS)
         handle_user_events(player_soldier)
 
         if is_lose():
@@ -27,6 +29,7 @@ def main():
 
         elif is_win():
             state["state"] = consts.WIN_STATE
+
         Screen.draw_game(state, player_soldier)
 
 
@@ -62,3 +65,6 @@ def is_lose():
 
 def is_win():
     pass
+
+if __name__ == '__main__':
+    main()
