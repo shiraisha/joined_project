@@ -36,7 +36,6 @@ def main():
 def handle_user_events(player_soldier):
     keys_pressed = pygame.key.get_pressed()
     for event in pygame.event.get():
-
         if event.type == pygame.QUIT:
             state["is_window_open"] = False
 
@@ -50,12 +49,13 @@ def handle_user_events(player_soldier):
             soldier_movement(player_soldier, keys_pressed)
 
 
+
 def soldier_movement(player_soldier, keys_pressed):
-    if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
+    if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
         player_soldier.x -= consts.SQUARE_LENGTH
-    if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH+ player_soldier.width < consts.WIDTH:  # right
+    if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH + player_soldier.width < consts.WIDTH:  # right
         player_soldier.x += consts.SQUARE_LENGTH
-    if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH > 0:  # up
+    if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH >= 0:  # up
         player_soldier.y -= consts.SQUARE_LENGTH
     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH

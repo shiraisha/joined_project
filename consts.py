@@ -9,7 +9,7 @@ WHITE = (255,255,255)
 IMAGE_WIDTH = 70
 IMAGE_HEIGHT = 80
 FPS = 60
-SQUARE_LENGTH = 20**0.5
+SQUARE_LENGTH = 20
 
 SOLDIER_IMAGE = pygame.image.load(os.path.join('pics', 'soldier.png'))
 SOLDIER = pygame.transform.scale(SOLDIER_IMAGE, (40,80))

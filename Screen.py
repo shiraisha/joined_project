@@ -2,12 +2,9 @@ import pygame
 import random
 import consts
 import MineField
-import os
 
 WIN = pygame.display.set_mode((consts.WIDTH,consts.HEIGHT))
 pygame.display.set_caption("The Flag")
-
-# BORDER = pygame.Rect(WIDTH/2, 0, 10, HEIGHT)
 
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 10)
@@ -38,6 +35,7 @@ def draw_window(player_soldier, flag):
         WIN.blit(multi_grass[i], (multi_grass_pos[i][0], multi_grass_pos[i][1]))
     pygame.display.update()
 
+
 def draw_grid(player_soldier):
     WIN.fill(consts.BLACK)
     blockSize = 20  # Set the size of the grid block
@@ -47,9 +45,10 @@ def draw_grid(player_soldier):
             pygame.draw.rect(WIN, consts.GREEN, rect, 1)
     WIN.blit(consts.SOLDIER, (player_soldier.x, player_soldier.y))
     for i in range(len(multi_mine)):
-        MineField.mines_locations((multi_mine_pos[i][0], multi_mine_pos[i][1]))
+        # MineField.mines_locations((multi_mine_pos[i][0], multi_mine_pos[i][1]))
         WIN.blit(multi_mine[i], (multi_mine_pos[i][0], multi_mine_pos[i][1]))
     pygame.display.update()
+
 
 # def soldier_movement(player_soldier, keys_pressed):
 #     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
@@ -79,12 +78,13 @@ def draw_message(message, font_size, color, location):
 def draw_game(game_state,player_soldier):
     # player_soldier = pygame.Rect(0, 0, 40, 80)
     flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
-    WIN.fill(consts.BACKGROUND_COLOR)
-    draw_window(player_soldier,flag)
+    # WIN.fill(consts.BACKGROUND_COLOR)
+    draw_grid(player_soldier)
+
     if game_state["pressed_key_enter"]:
         draw_grid(player_soldier)
 
-    if game_state["state"] == consts.LOSE_STATE:
+    elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
 
     elif game_state["state"] == consts.WIN_STATE:
