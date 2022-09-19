@@ -1,5 +1,6 @@
 import pygame
 
+import MineField
 import Screen
 import Soldier
 import consts
@@ -18,7 +19,8 @@ soldier_legs_location = [[3, 0], [3, 1]]
 
 def main():
     pygame.init()
-    player_soldier = pygame.Rect(0, 0, 40, 80)
+    soldier = Soldier.player()
+    player_soldier = pygame.Rect(soldier["position_x"], soldier["position_y"], soldier["width"], soldier["height"])
     clock = pygame.time.Clock()
 
     while state["is_window_open"]:
@@ -60,23 +62,18 @@ def soldier_movement(player_soldier, keys_pressed):
     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
         player_soldier.x -= consts.SQUARE_LENGTH
         state["pressed_key_left"] = True
-        # state["soldier_legs_location"][0][1] += 1
-        # state["soldier_legs_location"][1][1] += 1
+
     if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH + player_soldier.width < consts.WIDTH:  # right
         player_soldier.x += consts.SQUARE_LENGTH
         state["pressed_key_right"] = True
-        # state["soldier_legs_location"][0][1] -= 1
-        # state["soldier_legs_location"][1][1] -= 1
+
     if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH >= 0:  # up
         player_soldier.y -= consts.SQUARE_LENGTH
         state["pressed_key_up"] = True
-        # state["soldier_legs_location"][0][0] -= 1
-        # state["soldier_legs_location"][1][0] -= 1
+
     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH
         state["pressed_key_down"] = True
-        # state["soldier_legs_location"][0][0] += 1
-        # state["soldier_legs_location"][1][0] += 1
 
 def initialize_key_states():
     state["pressed_key_enter"] = False
@@ -85,8 +82,17 @@ def initialize_key_states():
     state["pressed_key_left"] = False
     state["pressed_key_right"] = False
 
+def print_matrix(matrix):
+    for row in matrix:
+        for item in row:
+            print(item, end=" ")
+        print()
+
 def is_lose():
-    pass
+    for i in range(len(soldier_legs_location)):
+        if MineField.game_surface_matrix[soldier_legs_location[i][0]][soldier_legs_location[i][1]] == "mine":
+            return True
+    return False
 
 def is_win():
     pass
