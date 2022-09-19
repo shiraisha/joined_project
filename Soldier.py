@@ -10,29 +10,44 @@ def player():
             "height": 80}
     return player_soldier
 
+# def legs_location(game_state, pos):
+#     # borders
+#     pos_legs_first_corner = [[3,0],[3,1]]
+#     pos_legs_second_corner = [[3, 48], [3, 49]]
+#     pos_legs_third_corner = [[24,0],[24,1]]
+#     pos_legs_fourth_corner = [[24,48],[24,49]]
+#     # check current pos and update to new pos
+#     if compare_list(pos,pos_legs_first_corner) and compare_list(pos,pos_legs_second_corner):
+#         if game_state["pressed_key_up"]:
+#             pos[0][0] -= 1
+#             pos[1][0] -= 1
+#     elif compare_list(pos,pos_legs_first_corner) and compare_list(pos,pos_legs_third_corner):
+#         if game_state["pressed_key_left"]:
+#             pos[0][1] -= 1
+#             pos[1][1] -= 1
+#     elif compare_list(pos,pos_legs_third_corner) and compare_list(pos,pos_legs_fourth_corner):
+#         if game_state["pressed_key_down"]:
+#             pos[0][0] += 1
+#             pos[1][0] += 1
+#     elif compare_list(pos,pos_legs_second_corner) and compare_list(pos,pos_legs_fourth_corner):
+#         if game_state["pressed_key_right"]:
+#             pos[0][1] += 1
+#             pos[1][1] += 1
+#     return pos
+
 def legs_location(game_state, pos):
-    # borders
-    pos_legs_first_corner = [[3,0],[3,1]]
-    pos_legs_second_corner = [[3, 48], [3, 49]]
-    pos_legs_third_corner = [[24,0],[24,1]]
-    pos_legs_fourth_corner = [[24,48],[24,49]]
-    # check current pos and update to new pos
-    if compare_list(pos,pos_legs_first_corner) and compare_list(pos,pos_legs_second_corner):
-        if game_state["pressed_key_up"]:
-            pos[0][0] -= 1
-            pos[1][0] -= 1
-    elif compare_list(pos,pos_legs_first_corner) and compare_list(pos,pos_legs_third_corner):
-        if game_state["pressed_key_left"]:
-            pos[0][1] -= 1
-            pos[1][1] -= 1
-    elif compare_list(pos,pos_legs_third_corner) and compare_list(pos,pos_legs_fourth_corner):
-        if game_state["pressed_key_down"]:
-            pos[0][0] += 1
-            pos[1][0] += 1
-    elif compare_list(pos,pos_legs_second_corner) and compare_list(pos,pos_legs_fourth_corner):
-        if game_state["pressed_key_right"]:
-            pos[0][1] += 1
-            pos[1][1] += 1
+    if game_state["pressed_key_up"]:
+        pos[0][0] -= 1
+        pos[1][0] -= 1
+    elif game_state["pressed_key_left"]:
+        pos[0][1] -= 1
+        pos[1][1] -= 1
+    elif game_state["pressed_key_down"]:
+        pos[0][0] += 1
+        pos[1][0] += 1
+    elif game_state["pressed_key_right"]:
+        pos[0][1] += 1
+        pos[1][1] += 1
     return pos
 
 def compare_list(pos1, pos2):

@@ -15,6 +15,7 @@ state = {
     "pressed_key_left": False,
     "pressed_key_right": False
 }
+
 soldier_legs_location = [[3, 0], [3, 1]]
 
 def main():
@@ -94,7 +95,7 @@ def is_lose():
     # print_matrix(game_surface)
     # print()
     for i in range(len(soldier_legs_location)):
-        if game_surface[soldier_legs_location[i][0]][soldier_legs_location[i][1]] == "mine":
+        if game_surface[soldier_legs_location[i][1]][soldier_legs_location[i][0]] == "mine":
             return True
     return False
 
