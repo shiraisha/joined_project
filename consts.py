@@ -20,6 +20,7 @@ GRASS = pygame.transform.scale(GRASS_IMAGE, (IMAGE_WIDTH, IMAGE_HEIGHT))
 MINE_IMAGE = pygame.image.load(os.path.join('pics', 'mine.png'))
 MINE = pygame.transform.scale(MINE_IMAGE, (60, 20))
 
+FONT_NAME = "Calibri"
 
 LOSE_MESSAGE = "You Lost!"
 LOSE_FONT_SIZE = int(0.15 * WIDTH)
