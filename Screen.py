@@ -16,22 +16,17 @@ multi_grass = []
 multi_grass_pos = []
 
 multi_mine = []
-# multi_mine_pos = []
 
 for i in range(20):
     multi_grass.append(consts.GRASS)
     pos = [random.randint(0,900), random.randint( 0, 400)]
     multi_grass_pos.append(pos)
 
-# for i in range(20):
-#     multi_mine.append(consts.MINE)
-#     pos = [random.randint(0, 900), random.randint(0, 400)]
-#     multi_mine_pos.append(pos)
-
 for i in range(20):
     multi_mine.append(consts.MINE)
 mine_list = MineField.generate_mines_positions()
 
+# regular screen
 def draw_window(player_soldier, flag):
     WIN.fill(consts.GREEN)
     WIN.blit(text_surface, (40,0))
@@ -41,7 +36,7 @@ def draw_window(player_soldier, flag):
         WIN.blit(multi_grass[i], (multi_grass_pos[i][0], multi_grass_pos[i][1]))
     pygame.display.update()
 
-
+# slots screen with mines
 def draw_grid(player_soldier):
     WIN.fill(consts.BLACK)
     blockSize = 20  # Set the size of the grid block
