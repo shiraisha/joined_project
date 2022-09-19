@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import random
 import consts
@@ -89,6 +91,7 @@ def draw_game(game_state,player_soldier):
 
     if game_state["pressed_key_enter"]:
         draw_grid(player_soldier)
+        time.sleep(1)
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
