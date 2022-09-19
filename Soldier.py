@@ -11,7 +11,7 @@ def player():
     return player_soldier
 
 def legs_location(game_state, pos):
-    # check current pos and update to new pos
+    # update to new leg position
         if game_state["pressed_key_up"]:
             pos[0][0] -= 1
             pos[1][0] -= 1
@@ -27,6 +27,7 @@ def legs_location(game_state, pos):
         return pos
 
 def body_location(game_state,pos):
+        # update new body position
         if game_state["pressed_key_up"]:
             pos[0][0] -= 1
             pos[1][0] -= 1

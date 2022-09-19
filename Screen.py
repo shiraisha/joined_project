@@ -29,6 +29,7 @@ temp_list = MineField.generate_mines_positions()
 mine_list = temp_list[0]
 game_table = temp_list[1]
 
+# return to minefield matrix
 def return_game_table():
     return game_table
 
@@ -70,6 +71,7 @@ def draw_message(message, font_size, color, location):
     font = pygame.font.SysFont(consts.FONT_NAME, font_size)
     text_img = font.render(message, True, color)
     WIN.blit(text_img, location)
+
 
 def draw_game(game_state,player_soldier):
     flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
