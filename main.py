@@ -52,6 +52,7 @@ def handle_user_events(player_soldier):
         else:
             soldier_movement(player_soldier, keys_pressed)
             copy_returned_position(Soldier.legs_location(state, soldier_legs_location))
+            print_matrix(Soldier.legs_location(state, soldier_legs_location))
 
 def copy_returned_position(pos):
     for i in range(len(soldier_legs_location)):
@@ -89,8 +90,11 @@ def print_matrix(matrix):
         print()
 
 def is_lose():
+    game_surface = Screen.return_game_table()
+    # print_matrix(game_surface)
+    # print()
     for i in range(len(soldier_legs_location)):
-        if MineField.game_surface_matrix[soldier_legs_location[i][0]][soldier_legs_location[i][1]] == "mine":
+        if game_surface[soldier_legs_location[i][0]][soldier_legs_location[i][1]] == "mine":
             return True
     return False
 
