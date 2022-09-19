@@ -23,13 +23,13 @@ def enter_mines():
         position = [random.randint(0, 47), random.randint(0, 24)]
         while check_if_three_indexes_are_not_empty(position):
             position = [random.randint(0, 47), random.randint(0, 24)]
-        enter_mine_to_matrix(position, i)
+        enter_mine_to_matrix(position)
         matrix_mine_pos.append(position)
 
-def enter_mine_to_matrix(position, num_of_mine):
-    game_surface_matrix[position[0]][position[1]] = 'mine' + str(num_of_mine)
-    game_surface_matrix[position[0] + 1][position[1]] = 'mine' + str(num_of_mine)
-    game_surface_matrix[position[0] + 2][position[1]] = 'mine' + str(num_of_mine)
+def enter_mine_to_matrix(position):
+    game_surface_matrix[position[0]][position[1]] = 'mine'
+    game_surface_matrix[position[0] + 1][position[1]] = 'mine'
+    game_surface_matrix[position[0] + 2][position[1]] = 'mine'
 
 def check_if_three_indexes_are_not_empty(position):
     if game_surface_matrix[position[0]][position[1]] == 'empty':
@@ -38,9 +38,16 @@ def check_if_three_indexes_are_not_empty(position):
                 return False
     return True
 
+def print_matrix(matrix):
+    for row in matrix:
+        for item in row:
+            print(item, end=" ")
+        print()
+
 def generate_mines_positions():
     enter_flag_to_matrix()
-    return matrix_mine_pos
+    list = [matrix_mine_pos, game_surface_matrix]
+    return list
 
 """-----------------------------------------------------------------------------------------------------------"""
 
