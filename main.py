@@ -6,7 +6,7 @@ import consts
 
 state = {
     "state": consts.RUNNING_STATE,
-    "soldier_legs_location": consts.START_SOLDIER_LEGS_LOCATION,
+    "soldier_legs_location": [[3, 0], [3, 1]],
     "is_window_open": True,
     "pressed_key_enter": False,
     "pressed_key_up": False,
@@ -55,15 +55,23 @@ def soldier_movement(player_soldier, keys_pressed):
     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
         player_soldier.x -= consts.SQUARE_LENGTH
         state["pressed_key_left"] = True
+        state["soldier_legs_location"][0][1] += 1
+        state["soldier_legs_location"][1][1] += 1
     if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH + player_soldier.width < consts.WIDTH:  # right
         player_soldier.x += consts.SQUARE_LENGTH
         state["pressed_key_right"] = True
+        state["soldier_legs_location"][0][1] -= 1
+        state["soldier_legs_location"][1][1] -= 1
     if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH >= 0:  # up
         player_soldier.y -= consts.SQUARE_LENGTH
         state["pressed_key_up"] = True
+        state["soldier_legs_location"][0][0] -= 1
+        state["soldier_legs_location"][1][0] -= 1
     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH
         state["pressed_key_down"] = True
+        state["soldier_legs_location"][0][0] += 1
+        state["soldier_legs_location"][1][0] += 1
 
 def initialize_key_states():
     state["pressed_key_enter"] = False
