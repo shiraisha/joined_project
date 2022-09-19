@@ -81,10 +81,10 @@ def draw_game(game_state,player_soldier):
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
-        time.sleep(3)
+        # time.sleep(3)
 
     elif game_state["state"] == consts.WIN_STATE:
         draw_win_message()
-        time.sleep(3)
+        # time.sleep(3)
 
     pygame.display.flip()

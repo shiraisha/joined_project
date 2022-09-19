@@ -26,18 +26,8 @@ def legs_location(game_state, pos):
             pos[1][1] += 1
         return pos
 
-def compare_list(pos1, pos2):
-    check_list = True
-    for i in range(len(pos1)):
-        for j in range(len(pos1[i])):
-            if pos1[i][j] == pos2[i][j]:
-                check_list = True
-            else:
-                return False
-    return check_list
-
-
 def body_location(game_state,pos):
+        initail = [[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]]
         if game_state["pressed_key_up"]:
             pos[0][0] -= 1
             pos[1][0] -= 1
