@@ -3,11 +3,12 @@ import math
 
 
 def player():
-    return {"image": consts.SOLDIER,
+    player_soldier = {"image": consts.SOLDIER,
             "position_x": 0,
             "position_y": 0,
             "width": 40,
             "height": 80}
+    return player_soldier
 
 def legs_location(game_state, pos):
     # borders
