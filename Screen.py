@@ -24,7 +24,13 @@ for i in range(20):
 
 for i in range(20):
     multi_mine.append(consts.MINE)
-mine_list = MineField.generate_mines_positions()
+
+temp_list = MineField.generate_mines_positions()
+mine_list = temp_list[0]
+game_table = temp_list[1]
+
+def return_game_table():
+    return game_table
 
 # regular screen
 def draw_window(player_soldier, flag):
@@ -66,9 +72,7 @@ def draw_message(message, font_size, color, location):
     WIN.blit(text_img, location)
 
 def draw_game(game_state,player_soldier):
-    # player_soldier = pygame.Rect(0, 0, 40, 80)
     flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
-    # WIN.fill(consts.BACKGROUND_COLOR)
     draw_window(player_soldier, flag)
 
     if game_state["pressed_key_enter"]:
@@ -77,24 +81,12 @@ def draw_game(game_state,player_soldier):
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
+        time.sleep(3)
+        pygame.quit()
 
     elif game_state["state"] == consts.WIN_STATE:
         draw_win_message()
+        time.sleep(3)
+        pygame.quit()
 
     pygame.display.flip()
-    # player_soldier = pygame.Rect(0,0,40,80)
-    # flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
-    # clock = pygame.time.Clock()
-    # run = True
-    # while run:
-    #     clock.tick(consts.FPS)
-    #     for event in pygame.event.get():
-    #         if event.type == pygame.QUIT:
-    #             run = False
-    #     keys_pressed = pygame.key.get_pressed()
-    #     soldier_movement(player_soldier,keys_pressed)
-    #     draw_window(player_soldier, flag)
-    # pygame.quit()
-
-# if __name__ == '__main__':
-#     main()
