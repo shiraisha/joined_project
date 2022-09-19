@@ -9,14 +9,14 @@ WHITE = (255,255,255)
 IMAGE_WIDTH = 70
 IMAGE_HEIGHT = 80
 FPS = 60
-SQUARE_LENGTH = 20**0.5
+SQUARE_LENGTH = 20
 
 SOLDIER_IMAGE = pygame.image.load(os.path.join('pics', 'soldier.png'))
 SOLDIER = pygame.transform.scale(SOLDIER_IMAGE, (40,80))
 FLAG_IMAGE = pygame.image.load(os.path.join('pics', 'flag.png'))
-FLAG = pygame.transform.scale(FLAG_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HEIGHT))
+FLAG = pygame.transform.scale(FLAG_IMAGE, (IMAGE_WIDTH, IMAGE_HEIGHT))
 GRASS_IMAGE = pygame.image.load(os.path.join('pics', 'grass.png'))
-GRASS = pygame.transform.scale(GRASS_IMAGE, (consts.IMAGE_WIDTH, consts.IMAGE_HEIGHT))
+GRASS = pygame.transform.scale(GRASS_IMAGE, (IMAGE_WIDTH, IMAGE_HEIGHT))
 MINE_IMAGE = pygame.image.load(os.path.join('pics', 'mine.png'))
 MINE = pygame.transform.scale(MINE_IMAGE, (60, 20))
 
