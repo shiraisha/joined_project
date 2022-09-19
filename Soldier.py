@@ -39,7 +39,7 @@ def compare_list(pos1, pos2):
     check_list = True
     for i in range(len(pos1)):
         for j in range(len(pos1[i])):
-            if pos1[i][j] == pos2[i][j]:
+            if pos1[i][j] != pos2[i][j]:
                 check_list = True
             else:
                 return False
