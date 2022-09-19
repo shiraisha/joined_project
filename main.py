@@ -14,6 +14,7 @@ state = {
     "pressed_key_left": False,
     "pressed_key_right": False
 }
+soldier_legs_location = [[3, 0], [3, 1]]
 
 def main():
     pygame.init()
@@ -48,8 +49,12 @@ def handle_user_events(player_soldier):
 
         else:
             soldier_movement(player_soldier, keys_pressed)
+            copy_returned_position(Soldier.legs_location(state, soldier_legs_location))
 
-
+def copy_returned_position(pos):
+    for i in range(len(soldier_legs_location)):
+        for j in range(len(soldier_legs_location[i])):
+            soldier_legs_location[i][j] = pos[i][j]
 
 def soldier_movement(player_soldier, keys_pressed):
     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
