@@ -17,6 +17,7 @@ state = {
 }
 
 soldier_legs_location = [[3, 0], [3, 1]]
+soldier_location =[[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [2, 1]]
 
 def main():
     pygame.init()
@@ -53,12 +54,18 @@ def handle_user_events(player_soldier):
         else:
             soldier_movement(player_soldier, keys_pressed)
             copy_returned_position(Soldier.legs_location(state, soldier_legs_location))
-            print_matrix(Soldier.legs_location(state, soldier_legs_location))
+            copy_returned_position_body(Soldier.body_location(state, soldier_location))
+            print_matrix(soldier_legs_location)
 
 def copy_returned_position(pos):
     for i in range(len(soldier_legs_location)):
         for j in range(len(soldier_legs_location[i])):
             soldier_legs_location[i][j] = pos[i][j]
+
+def copy_returned_position_body(pos):
+    for i in range(len(soldier_location)):
+        for j in range(len(soldier_location[i])):
+            soldier_location[i][j] = pos[i][j]
 
 def soldier_movement(player_soldier, keys_pressed):
     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
@@ -95,12 +102,16 @@ def is_lose():
     # print_matrix(game_surface)
     # print()
     for i in range(len(soldier_legs_location)):
-        if game_surface[soldier_legs_location[i][1]][soldier_legs_location[i][0]] == "mine":
+        if game_surface[soldier_legs_location[i][0]][soldier_legs_location[i][1]] == "mine":
             return True
     return False
 
 def is_win():
-    pass
+    game_surface = Screen.return_game_table()
+    for i in range(len(soldier_location)):
+        if game_surface[soldier_location[i][0]][soldier_legs_location[i][1]] == "flag":
+            return True
+    return False
 
 if __name__ == '__main__':
     main()

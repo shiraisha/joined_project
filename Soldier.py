@@ -27,7 +27,6 @@ def legs_location(game_state, pos):
         return pos
 
 def body_location(game_state,pos):
-        initail = [[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]]
         if game_state["pressed_key_up"]:
             pos[0][0] -= 1
             pos[1][0] -= 1
