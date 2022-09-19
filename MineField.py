@@ -28,13 +28,13 @@ def enter_mines():
 
 def enter_mine_to_matrix(position, num_of_mine):
     game_surface_matrix[position[0]][position[1]] = 'mine' + str(num_of_mine)
-    game_surface_matrix[position[0]][position[1] + 1] = 'mine' + str(num_of_mine)
-    game_surface_matrix[position[0]][position[1] + 2] = 'mine' + str(num_of_mine)
+    game_surface_matrix[position[0] + 1][position[1]] = 'mine' + str(num_of_mine)
+    game_surface_matrix[position[0] + 2][position[1]] = 'mine' + str(num_of_mine)
 
 def check_if_three_indexes_are_not_empty(position):
     if game_surface_matrix[position[0]][position[1]] == 'empty':
-        if game_surface_matrix[position[0]][position[1] + 1] == 'empty':
-            if game_surface_matrix[position[0]][position[1] + 2] == 'empty':
+        if game_surface_matrix[position[0] + 1][position[1]] == 'empty':
+            if game_surface_matrix[position[0] + 2][position[1]] == 'empty':
                 return False
     return True
 
