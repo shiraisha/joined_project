@@ -19,17 +19,21 @@ multi_grass = []
 multi_grass_pos = []
 
 multi_mine = []
-multi_mine_pos = []
+# multi_mine_pos = []
 
 for i in range(20):
     multi_grass.append(consts.GRASS)
     pos = [random.randint(0,900), random.randint( 0, 400)]
     multi_grass_pos.append(pos)
 
+# for i in range(20):
+#     multi_mine.append(consts.MINE)
+#     pos = [random.randint(0, 900), random.randint(0, 400)]
+#     multi_mine_pos.append(pos)
+
 for i in range(20):
     multi_mine.append(consts.MINE)
-    pos = [random.randint(0, 900), random.randint(0, 400)]
-    multi_mine_pos.append(pos)
+mine_list = MineField.generate_mines_positions()
 
 def draw_window(player_soldier, flag):
     WIN.fill(consts.GREEN)
@@ -51,7 +55,7 @@ def draw_grid(player_soldier):
     WIN.blit(consts.SOLDIER, (player_soldier.x, player_soldier.y))
     for i in range(len(multi_mine)):
         # MineField.mines_locations((multi_mine_pos[i][0], multi_mine_pos[i][1]))
-        WIN.blit(multi_mine[i], (multi_mine_pos[i][0], multi_mine_pos[i][1]))
+        WIN.blit(multi_mine[i], (mine_list[i][0]*20, mine_list[i][1]*20))
     pygame.display.update()
 
 # def draw_bonus(txt, x, y, size):
@@ -91,7 +95,7 @@ def draw_game(game_state,player_soldier):
 
     if game_state["pressed_key_enter"]:
         draw_grid(player_soldier)
-        time.sleep(1)
+        time.sleep(100)
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
