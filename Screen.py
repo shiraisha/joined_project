@@ -12,9 +12,6 @@ pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 10)
 text_surface = my_font.render('Welcome to The Flag game. Have Fun!', True, consts.WHITE)
 
-# bonus_end = pygame.time.get_ticks() + 1000
-
-
 multi_grass = []
 multi_grass_pos = []
 
@@ -54,23 +51,9 @@ def draw_grid(player_soldier):
             pygame.draw.rect(WIN, consts.GREEN, rect, 1)
     WIN.blit(consts.SOLDIER, (player_soldier.x, player_soldier.y))
     for i in range(len(multi_mine)):
-        # MineField.mines_locations((multi_mine_pos[i][0], multi_mine_pos[i][1]))
         WIN.blit(multi_mine[i], (mine_list[i][0]*20, mine_list[i][1]*20))
     pygame.display.update()
 
-# def draw_bonus(txt, x, y, size):
-#     if bonus_text and pygame.time.get_ticks() < bonus_end:
-#         screen.blit(*bonus_text)
-
-# def soldier_movement(player_soldier, keys_pressed):
-#     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
-#         player_soldier.x -= consts.SQUARE_LENGTH
-#     if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH+ player_soldier.width < consts.WIDTH:  # right
-#         player_soldier.x += consts.SQUARE_LENGTH
-#     if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH > 0:  # up
-#         player_soldier.y -= consts.SQUARE_LENGTH
-#     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
-#         player_soldier.y += consts.SQUARE_LENGTH
 
 def draw_lose_message():
     draw_message(consts.LOSE_MESSAGE, consts.LOSE_FONT_SIZE,
@@ -95,7 +78,7 @@ def draw_game(game_state,player_soldier):
 
     if game_state["pressed_key_enter"]:
         draw_grid(player_soldier)
-        time.sleep(100)
+        time.sleep(1)
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
