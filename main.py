@@ -109,7 +109,7 @@ def is_lose():
 def is_win():
     game_surface = Screen.return_game_table()
     for i in range(len(soldier_location)):
-        if game_surface[soldier_location[i][0]][soldier_legs_location[i][1]] == "flag":
+        if game_surface[soldier_location[i][0]][soldier_location[i][1]] == "flag":
             return True
     return False
 
