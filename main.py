@@ -17,7 +17,7 @@ state = {
 
 def main():
     pygame.init()
-    player_soldier = pygame.Rect(0,0,40,80)
+    player_soldier = pygame.Rect(0, 0, 40, 80)
     clock = pygame.time.Clock()
 
     while state["is_window_open"]:
@@ -55,23 +55,23 @@ def soldier_movement(player_soldier, keys_pressed):
     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH >= 0:  # left
         player_soldier.x -= consts.SQUARE_LENGTH
         state["pressed_key_left"] = True
-        state["soldier_legs_location"][0][1] += 1
-        state["soldier_legs_location"][1][1] += 1
+        # state["soldier_legs_location"][0][1] += 1
+        # state["soldier_legs_location"][1][1] += 1
     if keys_pressed[pygame.K_RIGHT] and player_soldier.x + consts.SQUARE_LENGTH + player_soldier.width < consts.WIDTH:  # right
         player_soldier.x += consts.SQUARE_LENGTH
         state["pressed_key_right"] = True
-        state["soldier_legs_location"][0][1] -= 1
-        state["soldier_legs_location"][1][1] -= 1
+        # state["soldier_legs_location"][0][1] -= 1
+        # state["soldier_legs_location"][1][1] -= 1
     if keys_pressed[pygame.K_UP] and player_soldier.y - consts.SQUARE_LENGTH >= 0:  # up
         player_soldier.y -= consts.SQUARE_LENGTH
         state["pressed_key_up"] = True
-        state["soldier_legs_location"][0][0] -= 1
-        state["soldier_legs_location"][1][0] -= 1
+        # state["soldier_legs_location"][0][0] -= 1
+        # state["soldier_legs_location"][1][0] -= 1
     if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH
         state["pressed_key_down"] = True
-        state["soldier_legs_location"][0][0] += 1
-        state["soldier_legs_location"][1][0] += 1
+        # state["soldier_legs_location"][0][0] += 1
+        # state["soldier_legs_location"][1][0] += 1
 
 def initialize_key_states():
     state["pressed_key_enter"] = False
