@@ -43,7 +43,7 @@ def handle_user_events(player_soldier):
         elif state["state"] != consts.RUNNING_STATE:
             continue
 
-        if keys_pressed[pygame.KSCAN_KP_ENTER]:
+        if keys_pressed[pygame.K_RETURN]:
             state["pressed_key_enter"] = True
 
         else:
