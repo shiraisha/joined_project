@@ -10,6 +10,9 @@ pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 10)
 text_surface = my_font.render('Welcome to The Flag game. Have Fun!', True, consts.WHITE)
 
+# bonus_end = pygame.time.get_ticks() + 1000
+
+
 multi_grass = []
 multi_grass_pos = []
 
@@ -49,6 +52,9 @@ def draw_grid(player_soldier):
         WIN.blit(multi_mine[i], (multi_mine_pos[i][0], multi_mine_pos[i][1]))
     pygame.display.update()
 
+# def draw_bonus(txt, x, y, size):
+#     if bonus_text and pygame.time.get_ticks() < bonus_end:
+#         screen.blit(*bonus_text)
 
 # def soldier_movement(player_soldier, keys_pressed):
 #     if keys_pressed[pygame.K_LEFT] and player_soldier.x - consts.SQUARE_LENGTH > 0:  # left
@@ -79,7 +85,7 @@ def draw_game(game_state,player_soldier):
     # player_soldier = pygame.Rect(0, 0, 40, 80)
     flag = pygame.Rect(consts.WIDTH-consts.IMAGE_WIDTH, consts.HEIGHT-consts.IMAGE_HEIGHT,consts.IMAGE_WIDTH,consts.IMAGE_HEIGHT)
     # WIN.fill(consts.BACKGROUND_COLOR)
-    draw_grid(player_soldier)
+    draw_window(player_soldier, flag)
 
     if game_state["pressed_key_enter"]:
         draw_grid(player_soldier)
