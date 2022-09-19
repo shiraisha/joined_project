@@ -6,7 +6,7 @@ def player():
     return {"image": consts.SOLDIER,
             "pos": [0,0]}
 
-def first_legs_location(game_state, pos):
+def legs_location(game_state, pos):
     pos_legs = [[3,0],[3,1]]
     if pos != pos_legs:
         if game_state["pressed_key_up"]:
