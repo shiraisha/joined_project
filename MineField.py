@@ -46,21 +46,3 @@ def generate_mines_positions():
 
 
 
-
-
-# # entering flag indexes to matrix
-# for i in range(21, 24):
-#     for j in range(46, 50):
-#         game_surface_matrix[i][j] = "flag"
-
-# for i in range(0, 4):
-#     for j in range(0, 2):
-#         game_surface_matrix[i][j] = "player_start"
-
-# for i in range(20):
-#     position = [random.randint(0, 24), random.randint(0, 47)]
-#     while check_if_three_indexes_are_not_empty(position):
-#         position = [random.randint(0, 25), random.randint(0, 47)]
-#     enter_mine_to_matrix(position, i)
-
-
