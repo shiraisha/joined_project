@@ -1,5 +1,5 @@
 import pygame
-
+import time
 import MineField
 import Screen
 import Soldier
@@ -32,9 +32,11 @@ def main():
 
         if is_lose():
             state["state"] = consts.LOSE_STATE
+            state["is_window_open"] = False
 
         elif is_win():
             state["state"] = consts.WIN_STATE
+            state["is_window_open"] = False
 
         Screen.draw_game(state, player_soldier)
 
@@ -55,7 +57,7 @@ def handle_user_events(player_soldier):
             soldier_movement(player_soldier, keys_pressed)
             copy_returned_position(Soldier.legs_location(state, soldier_legs_location))
             copy_returned_position_body(Soldier.body_location(state, soldier_location))
-            # print_matrix(soldier_legs_location)
+
 
 def copy_returned_position(pos):
     for i in range(len(soldier_legs_location)):
@@ -80,9 +82,10 @@ def soldier_movement(player_soldier, keys_pressed):
         player_soldier.y -= consts.SQUARE_LENGTH
         state["pressed_key_up"] = True
 
-    if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height < consts.HEIGHT:  # down
+    if keys_pressed[pygame.K_DOWN] and player_soldier.y + consts.SQUARE_LENGTH + player_soldier.height <= consts.HEIGHT:  # down
         player_soldier.y += consts.SQUARE_LENGTH
         state["pressed_key_down"] = True
+
 
 def initialize_key_states():
     state["pressed_key_enter"] = False
@@ -91,16 +94,8 @@ def initialize_key_states():
     state["pressed_key_left"] = False
     state["pressed_key_right"] = False
 
-def print_matrix(matrix):
-    for row in matrix:
-        for item in row:
-            print(item, end=" ")
-        print()
-
 def is_lose():
     game_surface = Screen.return_game_table()
-    # print_matrix(game_surface)
-    # print()
     for i in range(len(soldier_legs_location)):
         if game_surface[soldier_legs_location[i][1]][soldier_legs_location[i][0]] == "mine":
             return True

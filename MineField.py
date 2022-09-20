@@ -38,18 +38,11 @@ def check_if_three_indexes_are_not_empty(position):
                 return False
     return True
 
-def print_matrix(matrix):
-    for row in matrix:
-        for item in row:
-            print(item, end=" ")
-        print()
-
 def generate_mines_positions():
     enter_flag_to_matrix()
     list = [matrix_mine_pos, game_surface_matrix]
     return list
 
-"""-----------------------------------------------------------------------------------------------------------"""
 
 
 

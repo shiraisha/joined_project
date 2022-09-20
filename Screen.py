@@ -37,10 +37,10 @@ def return_game_table():
 def draw_window(player_soldier, flag):
     WIN.fill(consts.GREEN)
     WIN.blit(text_surface, (40,0))
-    WIN.blit(consts.SOLDIER, (player_soldier.x, player_soldier.y))
-    WIN.blit(consts.FLAG, (flag.x, flag.y))
     for i in range(len(multi_grass)):
         WIN.blit(multi_grass[i], (multi_grass_pos[i][0], multi_grass_pos[i][1]))
+    WIN.blit(consts.SOLDIER, (player_soldier.x, player_soldier.y))
+    WIN.blit(consts.FLAG, (flag.x, flag.y))
     pygame.display.update()
 
 # slots screen with mines
@@ -83,10 +83,10 @@ def draw_game(game_state,player_soldier):
 
     elif game_state["state"] == consts.LOSE_STATE:
         draw_lose_message()
-        # time.sleep(3)
+        time.sleep(3)
 
     elif game_state["state"] == consts.WIN_STATE:
         draw_win_message()
-        # time.sleep(3)
+        time.sleep(3)
 
     pygame.display.flip()
