@@ -55,7 +55,7 @@ def handle_user_events(player_soldier):
             soldier_movement(player_soldier, keys_pressed)
             copy_returned_position(Soldier.legs_location(state, soldier_legs_location))
             copy_returned_position_body(Soldier.body_location(state, soldier_location))
-            print_matrix(soldier_legs_location)
+            # print_matrix(soldier_legs_location)
 
 def copy_returned_position(pos):
     for i in range(len(soldier_legs_location)):
